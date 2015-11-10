@@ -51,5 +51,8 @@ module.exports = !function convert file, callback
   html .= to-string!
 
   json = (.1) <| html is /swiffyobject\s*=\s*({.*});\s*<\/script>/
+  
+  width = (.1) <| html is /width:\s*([0-9]+)px/
+  height = (.1) <| html is /height:\s*([0-9]+)px/
 
-  callback? null body.result.response <<< output: {html, json}
+  callback? null body.result.response <<< output: {html, json, width, height}
